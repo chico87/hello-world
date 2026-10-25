@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hollis &amp; Vane — Curated Vintage Furniture, Decor &amp; Art</title>
+  <meta name="description" content="Hollis & Vane is a curated vintage gallery for design-forward furniture, home decor, and art. Every piece is sourced, authenticated, and restored by specialists.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bone: #f4efe6;
+      --paper: #ebe4d6;
+      --ink: #1d1b18;
+      --muted: #6b645a;
+      --line: #d5ccbb;
+      --accent: #7a2e1f;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Inter", system-ui, sans-serif;
+      --gutter: clamp(16px, 4vw, 56px);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bone);
+      color: var(--ink);
+      font: 400 16px/1.65 var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img, svg { display: block; max-width: 100%; }
+
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--gutter); }
+    .eyebrow {
+      font: 500 11px/1 var(--sans);
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.05; }
+    h2 { font-size: clamp(36px, 5vw, 60px); letter-spacing: -.01em; }
+    em { font-style: italic; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bone) 92%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo { font: 500 24px/1 var(--serif); text-decoration: none; letter-spacing: .02em; }
+    .logo span { color: var(--accent); }
+    .nav ul { display: flex; gap: 36px; list-style: none; }
+    .nav ul a { text-decoration: none; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+    .nav ul a:hover { color: var(--accent); }
+    .menu-btn { display: none; background: none; border: 0; font: 500 13px var(--sans); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; color: var(--ink); }
+
+    /* Hero */
+    .hero { padding: clamp(64px, 10vw, 140px) 0 clamp(56px, 8vw, 110px); }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: end; }
+    .hero h1 { font-size: clamp(52px, 8.5vw, 124px); letter-spacing: -.02em; margin: 24px 0 32px; }
+    .hero h1 em { color: var(--accent); }
+    .hero p { font-size: 18px; max-width: 34ch; color: var(--muted); }
+    .hero-art {
+      aspect-ratio: 4 / 5;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      display: grid; place-items: center;
+      position: relative;
+    }
+    .hero-art svg { width: 62%; }
+    .hero-art figcaption {
+      position: absolute; left: 20px; right: 20px; bottom: 18px;
+      display: flex; justify-content: space-between;
+      font-size: 12px; color: var(--muted);
+    }
+    .btn {
+      display: inline-block; margin-top: 40px;
+      padding: 16px 30px;
+      background: var(--ink); color: var(--bone);
+      text-decoration: none; font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+      transition: background .2s;
+    }
+    .btn:hover { background: var(--accent); }
+    .btn.ghost { background: none; color: var(--ink); border: 1px solid var(--ink); margin-left: 12px; }
+    .btn.ghost:hover { background: var(--ink); color: var(--bone); }
+
+    /* Marquee strip */
+    .strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 22px 0; }
+    .strip ul { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px 32px; list-style: none; font: italic 400 22px/1.2 var(--serif); color: var(--muted); }
+
+    section { padding: clamp(72px, 10vw, 140px) 0; }
+
+    /* Philosophy */
+    .philosophy-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(32px, 6vw, 96px); }
+    .philosophy p.lead { font: 400 clamp(24px, 2.6vw, 34px)/1.35 var(--serif); margin-bottom: 28px; }
+    .philosophy p + p { color: var(--muted); max-width: 58ch; }
+
+    /* Collections */
+    .collections { background: var(--ink); color: var(--bone); }
+    .collections .eyebrow { color: #a59d90; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 56px; flex-wrap: wrap; }
+    .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #3a3631; border: 1px solid #3a3631; }
+    .col { background: var(--ink); padding: 40px 32px 44px; }
+    .col .num { font: italic 400 20px var(--serif); color: #a59d90; }
+    .col h3 { font-size: 40px; margin: 56px 0 16px; }
+    .col p { color: #bdb5a8; font-size: 15px; }
+    .col ul { list-style: none; margin-top: 28px; border-top: 1px solid #3a3631; }
+    .col li { padding: 12px 0; border-bottom: 1px solid #3a3631; font-size: 14px; display: flex; justify-content: space-between; }
+    .col li span { color: #a59d90; }
+
+    /* Featured */
+    .pieces { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 40px); }
+    .piece .frame {
+      aspect-ratio: 1; background: var(--paper); border: 1px solid var(--line);
+      display: grid; place-items: center; margin-bottom: 20px;
+      transition: background .3s;
+    }
+    .piece:hover .frame { background: #e3dac8; }
+    .piece .frame svg { width: 52%; }
+    .piece .meta { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+    .piece h3 { font-size: 26px; }
+    .piece .price { font-size: 14px; white-space: nowrap; }
+    .piece .prov { color: var(--muted); font-size: 14px; margin-top: 4px; }
+    .piece .status { display: inline-block; margin-top: 12px; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+
+    /* Process */
+    .process { background: var(--paper); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(24px, 3vw, 48px); margin-top: 64px; }
+    .step { border-top: 1px solid var(--ink); padding-top: 24px; }
+    .step .n { font: italic 400 18px var(--serif); color: var(--accent); }
+    .step h3 { font-size: 28px; margin: 12px 0 12px; }
+    .step p { font-size: 15px; color: var(--muted); }
+
+    /* Team */
+    .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+    .quote { font: italic 400 clamp(28px, 3.4vw, 44px)/1.25 var(--serif); }
+    .quote cite { display: block; margin-top: 24px; font: 500 12px var(--sans); letter-spacing: .16em; text-transform: uppercase; font-style: normal; color: var(--muted); }
+    .people { list-style: none; border-top: 1px solid var(--line); }
+    .people li { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .people strong { font: 400 24px var(--serif); }
+    .people span { color: var(--muted); font-size: 14px; }
+    .people em { grid-column: 1 / -1; color: var(--muted); font-size: 14px; font-style: normal; }
+
+    /* Visit + Inquire */
+    .visit { border-top: 1px solid var(--line); }
+    .visit-grid { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: clamp(32px, 5vw, 72px); }
+    .visit h3 { font-size: 28px; margin-bottom: 16px; }
+    .visit dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 24px; font-size: 15px; }
+    .visit dt { color: var(--muted); }
+    .visit address { font-style: normal; font-size: 15px; line-height: 1.8; }
+    form { display: grid; gap: 14px; }
+    label { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    input, select, textarea {
+      width: 100%; padding: 12px 0; margin-top: 4px;
+      background: none; border: 0; border-bottom: 1px solid var(--ink);
+      font: 400 16px var(--sans); color: var(--ink); border-radius: 0;
+    }
+    textarea { resize: vertical; min-height: 80px; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+    form button { justify-self: start; margin-top: 12px; border: 0; cursor: pointer; }
+    .form-note { font-size: 14px; color: var(--accent); min-height: 1.4em; }
+
+    footer { background: var(--ink); color: #a59d90; padding: 56px 0 40px; font-size: 13px; }
+    .foot { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 24px; }
+    footer .logo { color: var(--bone); font-size: 40px; }
+    footer ul { display: flex; gap: 24px; list-style: none; }
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--bone); }
+
+    @media (max-width: 900px) {
+      .hero-grid, .philosophy-grid, .team-grid { grid-template-columns: 1fr; }
+      .cols, .pieces { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .visit-grid { grid-template-columns: 1fr; }
+      .nav ul {
+        display: none; position: absolute; top: 72px; left: 0; right: 0;
+        flex-direction: column; gap: 0; background: var(--bone); border-bottom: 1px solid var(--line);
+      }
+      .nav ul.open { display: flex; }
+      .nav ul a { display: block; padding: 18px var(--gutter); border-top: 1px solid var(--line); }
+      .menu-btn { display: block; }
+      .btn.ghost { margin-left: 0; }
+      .strip ul { justify-content: flex-start; font-size: 18px; }
+    }
+    @media (max-width: 560px) {
+      .steps { grid-template-columns: 1fr; }
+      .hero .btn { display: block; text-align: center; }
+      .btn.ghost { margin-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="wrap nav" aria-label="Main">
+      <a href="#top" class="logo">Hollis <span>&amp;</span> Vane</a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+      <ul id="menu">
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#pieces">New Arrivals</a></li>
+        <li><a href="#process">Sourcing</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" style="padding-top: clamp(64px, 10vw, 140px)">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Vintage furniture, objects &amp; art · Est. 2011</p>
+          <h1>Fewer things, <em>chosen</em> well.</h1>
+          <p>A gallery of twentieth-century design, sourced by specialists and restored with care. Every piece earns its place.</p>
+          <a href="#pieces" class="btn">View new arrivals</a><a href="#visit" class="btn ghost">Book a viewing</a>
+        </div>
+        <figure class="hero-art">
+          <!-- Lounge chair -->
+          <svg viewBox="0 0 200 200" fill="none" stroke="#1d1b18" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M52 62c8-26 88-26 96 0l-8 64H60z" fill="#7a2e1f" stroke="none"/>
+            <path d="M44 120h112c6 0 9 6 6 11l-6 9H44l-6-9c-3-5 0-11 6-11z" fill="#c9b79a" stroke="none"/>
+            <path d="M58 140l-14 44M142 140l14 44M100 140v40"/>
+            <path d="M40 184h120" stroke-width="1.5" opacity=".35"/>
+          </svg>
+          <figcaption><span>Lounge chair, Denmark, c. 1958</span><span>No. 0412</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="strip">
+      <div class="wrap">
+        <ul>
+          <li>Danish Modern</li><li>Italian Postwar</li><li>French Studio Ceramics</li><li>American Craft</li><li>Works on Paper</li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="philosophy">
+      <div class="wrap philosophy-grid">
+        <div>
+          <p class="eyebrow">Our approach</p>
+          <h2 style="margin-top: 20px">Curated, <em>not</em> collected.</h2>
+        </div>
+        <div>
+          <p class="lead">We look at hundreds of pieces for every one that reaches our floor. What stays has real design pedigree, honest materials, and the quiet confidence of something made to last.</p>
+          <p>Our buyers spend the year at estate sales, private collections, and dealer networks across Europe and North America. Each piece is researched, attributed where possible, and restored by trusted craftspeople. Nothing is over-finished and nothing is passed off as something it isn't. You'll know where it came from, who likely made it, and what's been done to it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="collections" id="collections">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Collections</p>
+            <h2 style="margin-top: 20px">Three disciplines, one eye.</h2>
+          </div>
+        </div>
+        <div class="cols">
+          <article class="col">
+            <span class="num">i.</span>
+            <h3>Furniture</h3>
+            <p>Seating, case goods, and tables from the 1930s through the 1980s, chosen for form, construction, and condition.</p>
+            <ul>
+              <li>Lounge &amp; dining seating <span>42</span></li>
+              <li>Sideboards &amp; storage <span>18</span></li>
+              <li>Tables &amp; desks <span>23</span></li>
+            </ul>
+          </article>
+          <article class="col">
+            <span class="num">ii.</span>
+            <h3>Objects</h3>
+            <p>Lighting, studio ceramics, glass, and textiles: the details that make a room feel lived in and considered.</p>
+            <ul>
+              <li>Lighting <span>31</span></li>
+              <li>Ceramics &amp; glass <span>64</span></li>
+              <li>Rugs &amp; textiles <span>12</span></li>
+            </ul>
+          </article>
+          <article class="col">
+            <span class="num">iii.</span>
+            <h3>Art</h3>
+            <p>Paintings, prints, and sculpture by known and overlooked artists, with provenance documented wherever it exists.</p>
+            <ul>
+              <li>Paintings <span>27</span></li>
+              <li>Prints &amp; works on paper <span>39</span></li>
+              <li>Sculpture <span>9</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pieces">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">New arrivals</p>
+            <h2 style="margin-top: 20px">On the floor this month.</h2>
+          </div>
+          <p style="max-width: 36ch; color: var(--muted)">A selection of recent acquisitions. Ask us for the full inventory, condition reports, and additional photography.</p>
+        </div>
+        <div class="pieces">
+          <article class="piece">
+            <div class="frame">
+              <!-- Sideboard -->
+              <svg viewBox="0 0 200 200" fill="none" stroke="#1d1b18" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                <rect x="24" y="76" width="152" height="62" rx="2" fill="#a0673f" stroke="none"/>
+                <path d="M74 80v54M126 80v54" stroke="#6e4426" stroke-width="2"/>
+                <path d="M44 107h16M90 107h20M140 107h16" stroke="#e8dcc6" stroke-width="3"/>
+                <path d="M38 138l-6 34M162 138l6 34"/>
+              </svg>
+            </div>
+            <div class="meta"><h3>Teak sideboard</h3><span class="price">$6,800</span></div>
+            <p class="prov">Denmark, c. 1962 · Restored finish, original pulls</p>
+            <span class="status">Available</span>
+          </article>
+          <article class="piece">
+            <div class="frame">
+              <!-- Arc floor lamp -->
+              <svg viewBox="0 0 200 200" fill="none" stroke="#1d1b18" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                <path d="M70 176V70c0-36 70-48 92-8"/>
+                <path d="M146 62c4-14 30-14 34 0z" fill="#c7a24a" stroke="none"/>
+                <rect x="50" y="170" width="40" height="10" rx="2" fill="#f4efe6"/>
+              </svg>
+            </div>
+            <div class="meta"><h3>Arc floor lamp</h3><span class="price">$4,200</span></div>
+            <p class="prov">Italy, 1960s · Marble base, rewired</p>
+            <span class="status">Available</span>
+          </article>
+          <article class="piece">
+            <div class="frame">
+              <!-- Framed abstract -->
+              <svg viewBox="0 0 200 200" fill="none" stroke="#1d1b18" stroke-width="2.5" aria-hidden="true">
+                <rect x="40" y="30" width="120" height="146" fill="#f4efe6"/>
+                <rect x="56" y="46" width="88" height="114" fill="#e8dcc6" stroke="none"/>
+                <circle cx="90" cy="88" r="22" fill="#7a2e1f" stroke="none"/>
+                <rect x="96" y="104" width="36" height="42" fill="#2e4a52" stroke="none"/>
+              </svg>
+            </div>
+            <div class="meta"><h3>Untitled composition</h3><span class="price">$9,500</span></div>
+            <p class="prov">Oil on board, 1971 · Signed verso, framed</p>
+            <span class="status">On hold</span>
+          </article>
+          <article class="piece">
+            <div class="frame">
+              <!-- Ceramic vessels -->
+              <svg viewBox="0 0 200 200" fill="none" aria-hidden="true">
+                <path d="M62 170c-22-10-24-60 4-78 6-4 6-14 4-20h20c-2 6-2 16 4 20 28 18 26 68 4 78z" fill="#8a6e52"/>
+                <path d="M118 170c-12-6-14-40 2-52h24c16 12 14 46 2 52z" fill="#3f5a4c"/>
+                <path d="M36 172h128" stroke="#1d1b18" stroke-width="1.5" opacity=".35"/>
+              </svg>
+            </div>
+            <div class="meta"><h3>Pair of stoneware vessels</h3><span class="price">$2,400</span></div>
+            <p class="prov">France, 1950s · Studio-made, impressed marks</p>
+            <span class="status">Available</span>
+          </article>
+          <article class="piece">
+            <div class="frame">
+              <!-- Dining chair -->
+              <svg viewBox="0 0 200 200" fill="none" stroke="#1d1b18" stroke-width="3" stroke-linecap="round" aria-hidden="true">
+                <path d="M64 50c20-8 52-8 72 0" stroke="#a0673f" stroke-width="8"/>
+                <path d="M70 52l-4 120M130 52l4 120"/>
+                <path d="M60 108h80" stroke="#a0673f" stroke-width="2"/>
+                <path d="M62 104h76l-2 10H64z" fill="#c9b79a" stroke="none"/>
+                <path d="M84 56v48M100 56v48M116 56v48" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="meta"><h3>Set of six dining chairs</h3><span class="price">$11,000</span></div>
+            <p class="prov">Denmark, c. 1955 · Oak and paper cord, re-woven</p>
+            <span class="status">Available</span>
+          </article>
+          <article class="piece">
+            <div class="frame">
+              <!-- Bronze sculpture -->
+              <svg viewBox="0 0 200 200" fill="none" aria-hidden="true">
+                <path d="M100 40c18 10 26 34 14 56-8 14-4 30 10 44H76c14-14 18-30 10-44-12-22-4-46 14-56z" fill="#6b5536"/>
+                <rect x="68" y="140" width="64" height="30" fill="#1d1b18"/>
+              </svg>
+            </div>
+            <div class="meta"><h3>Abstract bronze</h3><span class="price">$7,600</span></div>
+            <p class="prov">United States, 1968 · Cast bronze on slate plinth</p>
+            <span class="status">Sold</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="wrap">
+        <p class="eyebrow">How we source</p>
+        <h2 style="margin-top: 20px; max-width: 18ch">Expertise you can see in every piece.</h2>
+        <div class="steps">
+          <div class="step">
+            <span class="n">01</span>
+            <h3>Find</h3>
+            <p>Our buyers work estates, private collections, and a trusted dealer network built over fifteen years.</p>
+          </div>
+          <div class="step">
+            <span class="n">02</span>
+            <h3>Authenticate</h3>
+            <p>We research makers, marks, and materials, and document provenance wherever it exists.</p>
+          </div>
+          <div class="step">
+            <span class="n">03</span>
+            <h3>Restore</h3>
+            <p>Conservation-minded restoration by specialist craftspeople. We preserve patina and never over-finish.</p>
+          </div>
+          <div class="step">
+            <span class="n">04</span>
+            <h3>Place</h3>
+            <p>Each piece arrives with a condition report and its history, and we offer white-glove delivery worldwide.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap team-grid">
+        <blockquote class="quote">
+          “We buy the way we’d furnish our own homes: slowly, with conviction, and only when a piece is unmistakably right.”
+          <cite>Founders, Hollis &amp; Vane</cite>
+        </blockquote>
+        <div>
+          <p class="eyebrow" style="margin-bottom: 20px">The specialists</p>
+          <ul class="people">
+            <li><strong>Furniture &amp; Design</strong><span>Head buyer</span><em>Scandinavian and Italian postwar design, joinery and restoration.</em></li>
+            <li><strong>Fine Art</strong><span>Curator</span><em>Mid-century painting and works on paper, attribution and provenance.</em></li>
+            <li><strong>Objects &amp; Lighting</strong><span>Specialist</span><em>Studio ceramics, art glass, and period lighting.</em></li>
+            <li><strong>Interiors</strong><span>Advisor</span><em>Private sourcing and placement for designers and collectors.</em></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit" id="visit">
+      <div class="wrap visit-grid">
+        <div>
+          <p class="eyebrow" style="margin-bottom: 20px">Visit the gallery</p>
+          <h3>Showroom</h3>
+          <address>
+            214 Mercer Lane<br>
+            Hudson, NY 12534<br>
+            <a href="tel:+15555550142">(555) 555-0142</a><br>
+            <a href="mailto:hello@hollisandvane.com">hello@hollisandvane.com</a>
+          </address>
+        </div>
+        <div>
+          <p class="eyebrow" style="margin-bottom: 20px">Hours</p>
+          <h3>Open to all</h3>
+          <dl>
+            <dt>Thu–Sat</dt><dd>11am – 6pm</dd>
+            <dt>Sunday</dt><dd>12pm – 5pm</dd>
+            <dt>Mon–Wed</dt><dd>By appointment</dd>
+          </dl>
+          <p style="margin-top: 20px; font-size: 15px; color: var(--muted)">Trade and designer accounts welcome. Private viewings arranged on request.</p>
+        </div>
+        <div>
+          <p class="eyebrow" style="margin-bottom: 20px">Inquire</p>
+          <h3>Request a piece, a viewing, or an appraisal</h3>
+          <form id="inquiry">
+            <label>Name<input type="text" name="name" required autocomplete="name"></label>
+            <label>Email<input type="email" name="email" required autocomplete="email"></label>
+            <label>I'm interested in
+              <select name="topic">
+                <option>A specific piece</option>
+                <option>Booking a private viewing</option>
+                <option>Sourcing for a project</option>
+                <option>Selling or consigning</option>
+              </select>
+            </label>
+            <label>Message<textarea name="message"></textarea></label>
+            <button type="submit" class="btn">Send inquiry</button>
+            <p class="form-note" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <a href="#top" class="logo">Hollis &amp; Vane</a>
+        <p style="margin-top: 12px">Curated vintage furniture, objects &amp; art.</p>
+      </div>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Newsletter</a></li>
+        <li><a href="#visit">Contact</a></li>
+      </ul>
+      <p>© <span id="year">2026</span> Hollis &amp; Vane</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const menu = document.getElementById('menu');
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+    menu.addEventListener('click', e => {
+      if (e.target.tagName === 'A') { menu.classList.remove('open'); btn.setAttribute('aria-expanded', false); }
+    });
+
+    // Placeholder handler until the form is wired to a real backend
+    document.getElementById('inquiry').addEventListener('submit', e => {
+      e.preventDefault();
+      e.target.querySelector('.form-note').textContent = 'Thank you. A specialist will be in touch within one business day.';
+      e.target.reset();
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
